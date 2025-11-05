@@ -404,7 +404,7 @@
                                     type="submit"
                                     wire:loading.attr="disabled"
                                     @disabled(!$agreeTerms)
-                                    class="rounded-full h-10 w-10 bg-primary text-white flex justify-center items-center z-20">
+                                    class="rounded-full h-10 w-full bg-primary text-white flex justify-center items-center z-20">
                                     <span wire:loading.remove>Daftar Sekarang</span>
                                     <span wire:loading class="flex items-center gap-2">
                                         {{-- Spinner --}}
@@ -436,71 +436,60 @@
                     </div>
 
                     {{-- Right: Benefits --}}
-                    <aside class="md:col-span-2 space-y-4">
-                        <div class="rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                                    {{-- shield-check --}}
-                                    <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"></path>
-                                        <path d="M9.5 12.5l2 2 3.5-3.5"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-default-900 text-sm mb-1">Aman & Terpercaya</h4>
-                                    <p class="text-xs text-default-600">Data Anda dilindungi dengan enkripsi tingkat tinggi</p>
-                                </div>
+                    <aside class="md:col-span-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+                        <div class="h-full rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
+                            <div class="flex h-full items-start gap-3">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                                <!-- shield-check -->
+                                <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"></path>
+                                <path d="M9.5 12.5l2 2 3.5-3.5"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="mb-1 text-sm font-semibold leading-5 text-default-900">Aman & Terpercaya</h4>
+                                <p class="text-xs leading-5 text-default-600">Data Anda dilindungi dengan enkripsi tingkat tinggi</p>
+                            </div>
                             </div>
                         </div>
 
-                        <div class="rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                                    {{-- users --}}
-                                    <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <circle cx="9" cy="8" r="3"></circle>
-                                        <path d="M2 19a7 4 0 0 1 14 0"></path>
-                                        <circle cx="17" cy="10" r="2.5"></circle>
-                                        <path d="M14.5 19a6 3 0 0 1 7 0"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-default-900 text-sm mb-1">Program Referral</h4>
-                                    <p class="text-xs text-default-600">Dapatkan komisi dari setiap pembelian downline</p>
-                                </div>
+                        <div class="h-full rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
+                            <div class="flex h-full items-start gap-3">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                                <!-- users -->
+                                <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="9" cy="8" r="3"></circle>
+                                <path d="M2 19a7 4 0 0 1 14 0"></path>
+                                <circle cx="17" cy="10" r="2.5"></circle>
+                                <path d="M14.5 19a6 3 0 0 1 7 0"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="mb-1 text-sm font-semibold leading-5 text-default-900">Program Referral</h4>
+                                <p class="text-xs leading-5 text-default-600">Dapatkan komisi dari setiap pembelian downline</p>
+                            </div>
                             </div>
                         </div>
 
-                        <div class="rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
-                            <div class="flex items-start gap-3">
-                                <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
-                                    {{-- zap --}}
-                                    <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
-                                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                                        <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-default-900 text-sm mb-1">Proses Cepat</h4>
-                                    <p class="text-xs text-default-600">Registrasi dalam hitungan detik</p>
-                                </div>
+                        <div class="h-full rounded-xl border border-default-200 bg-white/60 backdrop-blur-sm p-5">
+                            <div class="flex h-full items-start gap-3">
+                            <div class="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center shrink-0">
+                                <!-- zap -->
+                                <svg class="w-5 h-5 text-primary-600" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4 class="mb-1 text-sm font-semibold leading-5 text-default-900">Proses Cepat</h4>
+                                <p class="text-xs leading-5 text-default-600">Registrasi dalam hitungan detik</p>
+                            </div>
                             </div>
                         </div>
+                        </aside>
 
-                        {{-- Sidebar CTA --}}
-                        <div class="hidden md:block">
-                            <div class="rounded-xl border border-default-200 bg-white p-5">
-                                <p class="text-sm text-default-700">
-                                    Sudah punya akun?
-                                    <a href="{{ route('auth.login') }}" class="text-primary-600 hover:text-primary-700 font-semibold">
-                                        Masuk di sini
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                    </aside>
                 </div>
             </div>
         </div>
