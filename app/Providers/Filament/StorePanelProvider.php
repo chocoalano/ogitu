@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Admin\Widgets\OgituWidget;
 use App\Http\Middleware\ShopMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
@@ -29,6 +30,7 @@ class StorePanelProvider extends PanelProvider
         return $panel
             ->id('store')
             ->path('store')
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->login()
             ->registration()
             ->colors([
@@ -59,6 +61,7 @@ class StorePanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 // FilamentInfoWidget::class,
+                OgituWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
