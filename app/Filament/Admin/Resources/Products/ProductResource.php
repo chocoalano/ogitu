@@ -15,6 +15,7 @@ use Filament\Actions\ForceDeleteBulkAction;
 use Filament\Actions\RestoreAction;
 use Filament\Actions\RestoreBulkAction;
 use Filament\Actions\ViewAction;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -115,6 +116,22 @@ class ProductResource extends Resource
                 ->label('Specs (opsional)')
                 ->rows(3)
                 ->helperText('Spesifikasi tambahan (teks bebas / JSON ringkas).'),
+            FileUpload::make('images')
+                ->label('Gambar produk')
+                ->required()
+                ->multiple()
+                ->minFiles(1)
+                ->disk('public')
+                ->directory('products')
+                ->acceptedFileTypes(['image/*'])
+                ->imageEditor()
+                ->imageEditorAspectRatios([
+                    '16:9',
+                    '4:3',
+                    '1:1',
+                ])
+                ->default(fn (?Product $record): array => $record ? $record->media()->orderBy('position')->pluck('url')->toArray() : [])
+                ->helperText('Unggah gambar produk. Gambar lama akan terhapus saat upload gambar baru.'),
         ]);
     }
 
@@ -192,7 +209,43 @@ class ProductResource extends Resource
             ])
             ->recordActions([
                 ViewAction::make(),
-                EditAction::make(),
+                EditAction::make()
+                    ->mutateFormDataUsing(function (array $data): array {
+                        // Store images separately for later processing
+                        if (isset($data['images'])) {
+                            $data['_uploaded_images'] = $data['images'];
+                            unset($data['images']);
+                        }
+
+                        return $data;
+                    })
+                    ->after(function (Product $record, array $data) {
+                        // Handle image updates after the product is saved
+                        if (isset($data['_uploaded_images'])) {
+                            $uploadedImages = $data['_uploaded_images'];
+
+                            // Delete old images
+                            foreach ($record->media as $media) {
+                                // Delete file from storage
+                                if (\Storage::disk('public')->exists($media->url)) {
+                                    \Storage::disk('public')->delete($media->url);
+                                }
+                                // Delete database record
+                                $media->delete();
+                            }
+
+                            // Add new images
+                            foreach ($uploadedImages as $index => $imagePath) {
+                                \App\Models\Medium::create([
+                                    'owner_id' => $record->id,
+                                    'owner_type' => 'product',
+                                    'url' => 'storage/'.$imagePath,
+                                    'position' => $index + 1,
+                                    'alt' => $record->name,
+                                ]);
+                            }
+                        }
+                    }),
                 DeleteAction::make(),
                 ForceDeleteAction::make(),
                 RestoreAction::make(),

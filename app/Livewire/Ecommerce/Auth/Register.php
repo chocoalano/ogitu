@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Ecommerce\Auth;
 
 use App\Models\Customer;
 use App\Models\MlmMember;

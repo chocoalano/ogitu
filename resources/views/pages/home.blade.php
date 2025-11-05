@@ -220,7 +220,7 @@
                         class="order-3 p-4 overflow-hidden transition-all duration-300 border rounded-lg border-default-200 hover:border-primary hover:shadow-xl">
                         <div class="relative overflow-hidden divide-y rounded-lg divide-default-200 group">
                             <div class="flex justify-center mx-auto mb-4">
-                                <img class="w-1/3 h-1/3 transition-all group-hover:scale-105" src="{{ $p['image'] }}"
+                                <img class="w-full h-full transition-all group-hover:scale-105" src="{{ $p['image'] }}"
                                     alt="{{ $p['title'] }}">
                             </div>
                             <div class="pt-2">

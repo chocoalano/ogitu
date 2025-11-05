@@ -313,7 +313,7 @@
                             <div class="relative overflow-hidden divide-y rounded-lg divide-default-200 group">
                                 <div class="flex justify-center mx-auto mb-4">
                                     <a href="{{ $p['url'] ?? '#' }}" class="block">
-                                        <img class="w-1/3 h-1/3 transition-all group-hover:scale-105"
+                                        <img class="w-full h-full transition-all group-hover:scale-200"
                                              src="{{ $p['image'] ?? 'https://placehold.co/600x600?text=OGITU' }}"
                                              alt="{{ $p['title'] ?? 'Produk' }}">
                                     </a>

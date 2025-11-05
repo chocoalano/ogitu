@@ -1,10 +1,10 @@
 <div>
     <!-- Menu Penawaran/Bantuan (Offer/Help Menu) -->
-    <div class="z-20 items-center hidden h-8 text-white lg:flex bg-primary-950">
+    <div class="z-20 items-center hidden h-8 md:h-30 py-7 text-white lg:flex bg-primary-950">
         <div class="container">
             <nav class="grid items-center gap-4 lg:grid-cols-3">
                 @foreach (($topbar['messages'] ?? []) as $msg)
-                    <h5 class="text-sm text-center text-primary-50">
+                    <h5 class="text-xs text-center text-primary-50">
                         {{ $msg['text'] ?? '' }}
                         @if (!empty($msg['cta'] ?? null))
                             <a class="font-semibold underline" href="{{ $msg['cta']['url'] ?? 'javascript:void(0)' }}">
