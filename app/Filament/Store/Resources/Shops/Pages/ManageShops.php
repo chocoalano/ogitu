@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Filament\Store\Resources\Shops\Pages;
+
+use App\Filament\Store\Resources\Shops\ShopResource;
+use Filament\Actions\CreateAction;
+use Filament\Resources\Pages\ManageRecords;
+
+class ManageShops extends ManageRecords
+{
+    protected static string $resource = ShopResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            CreateAction::make(),
+        ];
+    }
+}
